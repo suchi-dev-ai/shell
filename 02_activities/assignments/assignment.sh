@@ -16,7 +16,7 @@ touch analysis/main.py
 
 # download client data
 curl -Lo rawdata.zip https://github.com/UofT-DSI/shell/raw/refs/heads/main/02_activities/assignments/rawdata.zip
-unzip -q rawdata.zip
+unzip -oq rawdata.zip
 
 ###########################################
 # Complete assignment here
@@ -24,14 +24,13 @@ unzip -q rawdata.zip
 # 1. Create a directory named data
 mkdir data
 # 2. Move the ./rawdata directory to ./data/raw
-mv assignments/rawdata assignments/data/raw
+mv rawdata data/raw
 # 3. List the contents of the ./data/raw directory
-ls assignments/data/raw
+ls data/raw
 # 4. In ./data/processed, create the following directories: server_logs, user_logs, and event_logs
 cd data
 mkdir processed
-cd processed
-mkdir server_logs user_logs event_logs
+mkdir processed/server_logs processed/user_logs processed/event_logs
 # 5. Copy all server log files (files with "server" in the name AND a .log extension) from ./data/raw to ./data/processed/server_logs
 cp raw/*server*.log processed/server_logs
 # 6. Repeat the above step for user logs and event logs
@@ -42,7 +41,6 @@ rm raw/*ipaddr*
 rm processed/user_logs/*ipaddr*
 # 8. Create a file named ./data/inventory.txt that lists all the files in the subfolders of ./data/processed
 find processed/ -type f >> ./inventory.txt
-
 ###########################################
 
 echo "Project setup is complete!"
